@@ -4,8 +4,8 @@ FROM python:3.11-alpine
 
 # Define variáveis de ambiente para impedir que o Python grave arquivos .pyc no disco
 # e para impedir o buffer de stdout e stderr.
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV PYTHONUNBUFFERED=1
 
 # Define o diretório de trabalho no contêiner.
 WORKDIR /app
@@ -33,4 +33,4 @@ EXPOSE 8000
 # Define o comando para executar a aplicação.
 # Use 0.0.0.0 para vincular a todas as interfaces de rede, tornando a aplicação acessível de fora do contêiner.
 # A flag --reload é para desenvolvimento e não deve ser usada em um Dockerfile de produção.
-CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
